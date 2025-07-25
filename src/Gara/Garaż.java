@@ -6,7 +6,6 @@ public class Garaż {
 
     static int LiczbaAut;
     static JList Rejestracja;
-    static int Miejsca;
 
     String name;
 
