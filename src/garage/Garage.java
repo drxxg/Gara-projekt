@@ -46,5 +46,4 @@ public class Garage {
 
     // TODO: Zastanów się jak dodać godzinę o której zaczęto parkowanie + metoda informująca o czasie parkowania dla danej tablicy rejestracyjnej w godiznach
 
-
 }
