@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println("W garażu znajduje sie " + Garaż.LiczbaAut + " samochodów");
 
-        System.out.println();
+        System.out.println("Rejestracja: " + auto1.getrejestracja());
     }
 
 
