@@ -3,11 +3,15 @@ package garage;
 public class Test {
 
     public static void main(String[] args) {
-         TODO 3: Tutaj stwórz garaż
-         TODO 3: Tutaj stwórz kilka różnych samochodów
-         Zaparkuj samochody
-         uzyj funkcji assert aby zweryfikować czy dany samochód jest w garażu
-         użyj funkcji assert aby zweryfikować zmianę pojemności garażu
-
+        Garage garage = new Garage(3);
+        Car car1 = new Car("ABC123");
+        Car car2 = new Car("XYZ789");
+        Car car3 = new Car("LMN456");
+        Car car4 = new Car("PQR321");
+        garage.park(car1);
+        garage.park(car2);
+        garage.park(car3);
+        garage.removeCar("LMN456");
+        garage.park(car4);
     }
 }
