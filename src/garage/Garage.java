@@ -8,6 +8,7 @@ public class Garage {
 
     private int totalSpaces;
     private int occupiedSpaces;
+    // TODO 7: Może dołożyć piętra w garażu?
     private Map<String, Car> carMap;
 
     public Garage(int totalSpaces) {
