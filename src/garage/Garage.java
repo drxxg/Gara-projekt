@@ -16,6 +16,7 @@ public class Garage {
         this.carMap = new HashMap<>();
     }
 
+    // TODO: Obsługa parkowania samochodu o tej samej tablicy rejestracyjnej???
     public void park(Car car) {
         if (occupiedSpaces < totalSpaces) {
             carMap.put(car.getLicensePlate(), car);
