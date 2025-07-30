@@ -6,33 +6,35 @@ import java.util.Map;
 
 public class Garage {
 
-    private int totalSpaces;
-    private int occupiedSpaces;
-    // TODO 7: Może dołożyć piętra w garażu?
-    private Map<String, Car> carMap;
+    private int totalFloors;
+    private int totalspacesperFloor;
+    private Map<Integer, Map<String, Car>> floors;
 
-    public Garage(int totalSpaces) {
-        this.totalSpaces = totalSpaces;
-        this.occupiedSpaces = 0;
-        this.carMap = new HashMap<>();
+    public Garage(int totalFloors, int totalspacesperFloor) {
+        this.totalFloors = totalFloors;
+        this.totalspacesperFloor = totalspacesperFloor;
+        this.floors = new HashMap<>();
+
+        for (int i = 0; i < totalFloors; i++) {}
+        floors.put(int i, new HashMap<String,Car>());
     }
 
     // TODO: Obsługa parkowania samochodu o tej samej tablicy rejestracyjnej???
     public void park(Car car) {
-        if (occupiedSpaces < totalSpaces) {
-            carMap.put(car.getLicensePlate(), car);
-            occupiedSpaces++;
+        if (totalspacesperFloor < totalFloors) {
+            floors.put(car.getLicensePlate(), car);
+            totalspacesperFloor++;
         } else {
             System.out.println("Garage is full. Cannot park the car: " + car.getLicensePlate());
         }
     }
 
     public boolean isCarParked(String registrationNumber) {
-        return carMap.containsKey(registrationNumber);
+        return floors.containsKey(registrationNumber);
     }
 
     public void removeCar(String registrationNumber) {
-        if (carMap.containsKey(registrationNumber)) {
+        if (floors.containsKey(registrationNumber)) {
             occupiedSpaces--;
             carMap.remove(registrationNumber);
         } else {
