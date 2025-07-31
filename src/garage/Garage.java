@@ -15,8 +15,9 @@ public class Garage {
         this.totalspacesperFloor = totalspacesperFloor;
         this.floors = new HashMap<>();
 
-        for (int i = 0; i < totalFloors; i++) {}
-        floors.put(int i, new HashMap<String,Car>());
+        for (int i = 0; i < totalFloors; i++) {
+            floors.put(i, new HashMap<String,Car>());
+        }
     }
 
     // TODO: Obsługa parkowania samochodu o tej samej tablicy rejestracyjnej???
