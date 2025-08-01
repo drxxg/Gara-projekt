@@ -13,4 +13,4 @@ public class Test {
         garage.park(car3);
         garage.removeCar("LMN456");
         garage.park(car4);
-    }
+    }}

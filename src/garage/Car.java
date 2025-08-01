@@ -16,4 +16,8 @@ public class Car {
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
+
+    public String getRegistrationNumber() {
+        return "";
+    }
 }
