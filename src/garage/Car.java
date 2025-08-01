@@ -18,6 +18,6 @@ public class Car {
     }
 
     public String getRegistrationNumber() {
-        return "";
+        return licensePlate;
     }
 }
