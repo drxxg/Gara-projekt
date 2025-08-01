@@ -11,10 +11,10 @@ public class Test {
         garage.park(car1);
         garage.park(car2);
         garage.park(car3);
-        Thread.sleep(900);
-        garage.removeCar("LMN456");
+        Thread.sleep(1058);
+        garage.removePojazd("LMN456");
         garage.park(car4);
         garage.printZysk();
     }
-
+//Thread.sleep nalicza czas
 }

@@ -9,7 +9,7 @@ public class Garage {
     public int totalFloors;
     private int spacesPerFloor;
     private int zyskzaParkowanie;
-    private Map<Integer, Map<String, Car>> floors;
+    private Map<Integer, Map<String, Pojazd>> floors;
 
     public Garage(int totalFloors, int spacesPerFloor) {
         this.totalFloors = totalFloors;
@@ -17,21 +17,21 @@ public class Garage {
         this.floors = new HashMap<>();
 
         for (int i = 0; i < totalFloors; i++) {
-            floors.put(i, new HashMap<String, Car>());
+            floors.put(i, new HashMap<String, Pojazd>());
         }
     }
 
     // TODO: Obsługa parkowania samochodu o tej samej tablicy rejestracyjnej???
-    public void park(Car car) {
+    public void park(Pojazd car) {
         String plate = car.getRegistrationNumber();
 
-        if (isCarParked(plate)) {
-            System.out.println("Car " + plate + " is already parked.");
+        if (isPojazdParked(plate)) {
+            System.out.println("Pojazd " + plate + " is already parked.");
             return;
         }
 
         for (int i = 0; i < totalFloors; i++) {
-            Map<String, Car> floorMap = floors.get(i);
+            Map<String, Pojazd> floorMap = floors.get(i);
             if (floorMap.size() < spacesPerFloor) {
                 floorMap.put(plate, car);
                 System.out.println("Parked car " + plate + " on floor " + i);
@@ -43,8 +43,8 @@ public class Garage {
         System.out.println("Garage is full. Cannot park the car: " + plate);
     }
 // alt + crtl +l = format code
-    public boolean isCarParked(String registrationNumber) {
-        for (Map<String, Car> floorMap : floors.values()) {
+    public boolean isPojazdParked(String registrationNumber) {
+        for (Map<String, Pojazd> floorMap : floors.values()) {
             if (floorMap.containsKey(registrationNumber)) {
                 return true;
             }
@@ -52,23 +52,23 @@ public class Garage {
         return false;
     }
 
-    public void removeCar(String registrationNumber) {
+    public void removePojazd(String registrationNumber) {
         for (int i = 0; i < totalFloors; i++) {
-            Map<String, Car> floorMap = floors.get(i);
+            Map<String, Pojazd> floorMap = floors.get(i);
             if (floorMap.containsKey(registrationNumber)) {
-               Car car = floorMap.remove(registrationNumber);
+               Pojazd car = floorMap.remove(registrationNumber);
                 System.out.println("Removed car " + registrationNumber + " from floor " + i);
                 car.stoptheTimer();
                 zyskzaParkowanie = zyskzaParkowanie + car.obliczPłatnośćzaParkowanie();
                 return;
             }
         }
-        System.out.println("Car with registration number " + registrationNumber + " not found in the garage.");
+        System.out.println("Pojazd with registration number " + registrationNumber + " not found in the garage.");
     }
 
     public int getAvailableSpaces() {
         int used = 0;
-        for (Map<String, Car> floorMap : floors.values()) {
+        for (Map<String, Pojazd> floorMap : floors.values()) {
             used += floorMap.size();
         }
         int capacity = totalFloors * spacesPerFloor;
