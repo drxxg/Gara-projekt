@@ -2,7 +2,7 @@ package garage;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Garage garage = new Garage(3, 2);
         Car car1 = new Car("ABC123");
         Car car2 = new Car("XYZ789");
@@ -11,8 +11,10 @@ public class Test {
         garage.park(car1);
         garage.park(car2);
         garage.park(car3);
+        Thread.sleep(900);
         garage.removeCar("LMN456");
         garage.park(car4);
+        garage.printZysk();
     }
 
 }

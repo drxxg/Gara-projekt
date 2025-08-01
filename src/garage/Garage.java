@@ -8,6 +8,7 @@ public class Garage {
 
     public int totalFloors;
     private int spacesPerFloor;
+    private int zyskzaParkowanie;
     private Map<Integer, Map<String, Car>> floors;
 
     public Garage(int totalFloors, int spacesPerFloor) {
@@ -34,6 +35,7 @@ public class Garage {
             if (floorMap.size() < spacesPerFloor) {
                 floorMap.put(plate, car);
                 System.out.println("Parked car " + plate + " on floor " + i);
+                car.starttimer();
                 return;
             }
         }
@@ -54,8 +56,10 @@ public class Garage {
         for (int i = 0; i < totalFloors; i++) {
             Map<String, Car> floorMap = floors.get(i);
             if (floorMap.containsKey(registrationNumber)) {
-                floorMap.remove(registrationNumber);
+               Car car = floorMap.remove(registrationNumber);
                 System.out.println("Removed car " + registrationNumber + " from floor " + i);
+                car.stoptheTimer();
+                zyskzaParkowanie = zyskzaParkowanie + car.obliczPłatnośćzaParkowanie();
                 return;
             }
         }
@@ -69,6 +73,10 @@ public class Garage {
         }
         int capacity = totalFloors * spacesPerFloor;
         return capacity - used;
+    }
+
+    public void printZysk() {
+        System.out.println("Zysk całkowity wynosi " + zyskzaParkowanie + "zł");
     }
 
     // TODO: Zastanów się jak dodać godzinę o której zaczęto parkowanie + metoda informująca o czasie parkowania dla danej tablicy rejestracyjnej w godiznach
